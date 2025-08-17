@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- SEO -->
+  <title>Enhanced HTML5 Content & Forms</title>
+  <meta name="description" content="Demonstration of semantic HTML5 layout, rich content (lists, tables, media), and accessible, validated web forms." />
+  <meta name="author" content="Your Name" />
+
+  <!-- Basic, readable styling (inline to keep it single-file) -->
+  <style>
+    :root { --bg:#ffffff; --ink:#111; --muted:#555; --accent:#0b5; --line:#ddd; --radius:12px; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; color: var(--ink); background: var(--bg); line-height: 1.6; }
+    header, main, footer { max-width: 960px; margin: 0 auto; padding: 1.25rem; }
+    header { border-bottom: 1px solid var(--line); }
+    nav ul { list-style: none; padding: 0; display: flex; gap: 1rem; flex-wrap: wrap; }
+    nav a { text-decoration: none; color: var(--ink); padding: .25rem .5rem; border-radius: 8px; }
+    nav a:focus, nav a:hover { outline: 2px solid var(--accent); outline-offset: 2px; }
+    h1, h2, h3 { line-height: 1.25; }
+    section { margin-block: 2rem; }
+    .grid { display: grid; gap: 1rem; }
+    @media (min-width: 720px){ .grid-2 { grid-template-columns: 1fr 1fr; } }
+    figure { margin: 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+    figcaption { padding: .5rem .75rem; font-size: .9rem; color: var(--muted); background: #fafafa; }
+    img, video { display: block; width: 100%; height: auto; }
+    table { width: 100%; border-collapse: collapse; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+    caption { text-align: left; font-weight: 600; padding: .75rem; }
+    th, td { padding: .75rem; border-top: 1px solid var(--line); vertical-align: top; }
+    th { background: #fafafa; text-align: left; }
+    .form-card { border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem; }
+    fieldset { border: 1px solid var(--line); border-radius: 10px; padding: 1rem; margin-bottom: 1rem; }
+    legend { font-weight: 600; padding: 0 .5rem; }
+    label { display: block; margin-top: .75rem; font-weight: 600; }
+    input, select, textarea { width: 100%; padding: .6rem .7rem; border: 1px solid var(--line); border-radius: 8px; font: inherit; }
+    .help { font-size: .875rem; color: var(--muted); margin-top: .25rem; }
+    .row { display: grid; grid-template-columns: 1fr; gap: .75rem; }
+    @media (min-width: 720px){ .row-2 { grid-template-columns: 1fr 1fr; } .row-3 { grid-template-columns: 1fr 1fr 1fr; } }
+    .actions { display: flex; gap: .75rem; margin-top: 1rem; }
+    button, input[type="submit"] { border: 0; padding: .7rem 1rem; border-radius: 10px; background: var(--accent); color: white; font-weight: 600; cursor: pointer; }
+    button.secondary { background: #333; }
+    footer { border-top: 1px solid var(--line); color: var(--muted); font-size: .95rem; }
+    .badge { display:inline-block; padding:.125rem .5rem; font-size:.8rem; background:#eefcf3; color:#0a4; border:1px solid #c6f3d7; border-radius:999px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Enhanced HTML5 Content & Mastering Forms <span class="badge">HTML5</span></h1>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#content">Rich Content</a></li>
+        <li><a href="#plans">Pricing Table</a></li>
+        <li><a href="#media">Media</a></li>
+        <li><a href="#form">Registration Form</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Rich content with lists -->
+    <section id="content" aria-labelledby="content-h2">
+      <h2 id="content-h2">Well-Structured Content</h2>
+
+      <div class="grid grid-2">
+        <article>
+          <h3>Features (Unordered List)</h3>
+          <ul>
+            <li>Semantic layout using HTML5 elements</li>
+            <li>Accessible, labeled form controls</li>
+            <li>SEO-friendly metadata & headings</li>
+          </ul>
+
+          <h3>Steps to Complete (Ordered List)</h3>
+          <ol>
+            <li>Review assignment objectives</li>
+            <li>Build rich content sections</li>
+            <li>Create a validated HTML5 form</li>
+            <li>Test accessibility & validation</li>
+            <li>Commit and push to GitHub</li>
+          </ol>
+        </article>
+
+        <article>
+          <h3>Key Terms (Definition List)</h3>
+          <dl>
+            <dt>Accessibility</dt>
+            <dd>Designing for all users, including those using assistive tech.</dd>
+            <dt>Semantic HTML</dt>
+            <dd>Meaningful elements that describe content structure.</dd>
+            <dt>Validation</dt>
+            <dd>Native HTML checks that prevent invalid input.</dd>
+          </dl>
+        </article>
+      </div>
+    </section>
+
+    <!-- A11y friendly table -->
+    <section id="plans" aria-labelledby="plans-h2">
+      <h2 id="plans-h2">Plans Table</h2>
+      <table>
+        <caption>Comparison of Subscription Plans</caption>
+        <thead>
+          <tr>
+            <th scope="col">Plan</th>
+            <th scope="col">Storage</th>
+            <th scope="col">Support</th>
+            <th scope="col">Monthly Price (USD)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Starter</th>
+            <td>10 GB</td>
+            <td>Email</td>
+            <td>$5</td>
+          </tr>
+          <tr>
+            <th scope="row">Pro</th>
+            <td>100 GB</td>
+            <td>Email + Chat</td>
+            <td>$15</td>
+          </tr>
+          <tr>
+            <th scope="row">Business</th>
+            <td>1 TB</td>
+            <td>24/7 Priority</td>
+            <td>$45</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Media: image + audio + video -->
+    <section id="media" aria-labelledby="media-h2">
+      <h2 id="media-h2">Embedded Media</h2>
+
+      <div class="grid grid-2">
+        <figure>
+          <img src="https://picsum.photos/800/450" alt="Abstract placeholder landscape image" />
+          <figcaption>Figure 1. Responsive image with proper alt text.</figcaption>
+        </figure>
+
+        <div>
+          <figure>
+            <figcaption>Sample Audio (controls for accessibility):</figcaption>
+            <audio controls preload="metadata">
+              <source src="https://www.w3schools.com/html/horse.ogg" type="audio/ogg" />
+              <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg" />
+              Your browser does not support the audio element.
+            </audio>
+          </figure>
+
+          <figure style="margin-top:1rem;">
+            <figcaption>Sample Video (muted so it can autoplay when allowed):</figcaption>
+            <video controls width="100%" muted playsinline>
+              <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Complete HTML5 form -->
+    <section id="form" aria-labelledby="form-h2">
+      <h2 id="form-h2">Registration Form (HTML5 Validation)</h2>
+      <p class="help" id="form-help">All fields marked with * are required. The form uses native HTML5 validation—no JavaScript.</p>
+
+      <form class="form-card" action="#" method="post" autocomplete="on" aria-describedby="form-help">
+        <!-- Readonly example -->
+        <div class="row row-3">
+          <div>
+            <label for="planId">Plan ID (readonly)</label>
+            <input id="planId" name="planId" type="text" value="PRO-2025-07" readonly />
+            <p class="help">Readonly values cannot be edited.</p>
+          </div>
+
+          <div>
+            <label for="referral">Referral Code (optional)</label>
+            <input id="referral" name="referral" type="text" placeholder="e.g., FRIEND25" minlength="5" maxlength="12" />
+            <p class="help">Use 5–12 characters.</p>
+          </div>
+
+          <div>
+            <label for="color">Brand Color</label>
+            <input id="color" name="color" type="color" value="#0bb56a" />
+          </div>
+        </div>
+
+        <fieldset>
+          <legend>Personal Details</legend>
+          <div class="row row-2">
+            <div>
+              <label for="fname">First Name *</label>
+              <input id="fname" name="fname" type="text" placeholder="Jane" autocomplete="given-name" required />
+            </div>
+            <div>
+              <label for="lname">Last Name *</label>
+              <input id="lname" name="lname" type="text" placeholder="Doe" autocomplete="family-name" required />
+            </div>
+          </div>
+
+          <div class="row row-2">
+            <div>
+              <label for="email">Email *</label>
+              <input id="email" name="email" type="email" placeholder="jane@example.com" autocomplete="email" required />
+              <p class="help">We’ll send a confirmation link.</p>
+            </div>
+            <div>
+              <label for="phone">Phone (10 digits) *</label>
+              <input id="phone" name="phone" type="tel" placeholder="0712345678" pattern="^[0-9]{10}$" inputmode="numeric" required />
+              <p class="help">Exactly 10 digits, numbers only.</p>
+            </div>
+          </div>
+
+          <div class="row row-3">
+            <div>
+              <label for="password">Password *</label>
+              <input id="password" name="password" type="password" placeholder="Min 8 chars" minlength="8" required />
+            </div>
+            <div>
+              <label for="website">Website</label>
+              <input id="website" name="website" type="url" placeholder="https://example.com" />
+            </div>
+            <div>
+              <label for="birth">Date of Birth *</label>
+              <input id="birth" name="birth" type="date" required />
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Preferences</legend>
+
+          <div class="row row-2">
+            <div>
+              <label for="country">Country *</label>
+              <select id="country" name="country" required>
+                <option value="">-- Select Country --</option>
+                <option value="KE">Kenya</option>
+                <option value="UG">Uganda</option>
+                <option value="TZ">Tanzania</option>
+              </select>
+            </div>
+            <div>
+              <label for="city">City (with suggestions)</label>
+              <input list="cities" id="city" name="city" placeholder="Start typing…" />
+              <datalist id="cities">
+                <option value="Nairobi"></option>
+                <option value="Mombasa"></option>
+                <option value="Kisumu"></option>
+              </datalist>
+            </div>
+          </div>
+
+          <div class="row row-3">
+            <div>
+              <label for="users">Team Size (1–50)</label>
+              <input id="users" name="users" type="number" min="1" max="50" step="1" value="5" />
+            </div>
+            <div>
+              <label for="usage">Expected Usage</label>
+              <input id="usage" name="usage" type="range" min="0" max="100" value="40" />
+            </div>
+            <div>
+              <label for="avatar">Upload Avatar (PNG/JPG)</label>
+              <input id="avatar" name="avatar" type="file" accept=".png,.jpg,.jpeg" />
+            </div>
+          </div>
+
+          <div>
+            <span class="help" id="plan-note">Choose a plan that fits your needs.</span>
+            <fieldset aria-describedby="plan-note">
+              <legend>Plan Selection *</legend>
+              <label><input type="radio" name="plan" value="starter" required /> Starter</label>
+              <label><input type="radio" name="plan" value="pro" /> Pro</label>
+              <label><input type="radio" name="plan" value="business" /> Business</label>
+            </fieldset>
+          </div>
+
+          <div>
+            <label>Add-ons</label>
+            <label><input type="checkbox" name="addons" value="backup" /> Automated Backups</label>
+            <label><input type="checkbox" name="addons" value="priority" /> Priority Support</label>
+            <label><input type="checkbox" name="addons" value="reports" /> Advanced Reports</label>
+          </div>
+
+          <div>
+            <label for="notes">Notes / Requirements</label>
+            <textarea id="notes" name="notes" rows="4" placeholder="Tell us anything else we should know…"></textarea>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Billing</legend>
+          <div class="row row-2">
+            <div>
+              <label for="card">Card Number *</label>
+              <input id="card" name="card" type="text" inputmode="numeric" placeholder="1234 5678 9012 3456" pattern="^[0-9 ]{16,19}$" required />
+              <p class="help">Numbers & spaces only.</p>
+            </div>
+            <div>
+              <label for="cvc">CVC *</label>
+              <input id="cvc" name="cvc" type="text" inputmode="numeric" placeholder="123" pattern="^[0-9]{3,4}$" required />
+            </div>
+          </div>
+
+          <div class="row row-2">
+            <div>
+              <label for="expiry">Expiry (MM/YY) *</label>
+              <input id="expiry" name="expiry" type="text" placeholder="08/27" pattern="^(0[1-9]|1[0-2])\/\d{2}$" required />
+            </div>
+            <div>
+              <label for="coupon">Coupon Code</label>
+              <input id="coupon" name="coupon" type="text" placeholder="SAVE10" minlength="4" maxlength="12" />
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="actions">
+          <input type="submit" value="Submit Registration" />
+          <button class="secondary" type="reset">Reset</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Your Name • Built with semantic HTML5, native validation, and accessible patterns.</p>
+  </footer>
+</body>
+</html>
